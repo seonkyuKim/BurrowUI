@@ -19,6 +19,8 @@
           <th>Start Offset</th>
           <th>End Offset</th>
           <th class="mdl-data-table__cell--non-numeric">Topic</th>
+          <th class="mdl-data-table__cell--non-numeric">Owner</th>
+          <th class="mdl-data-table__cell--non-numeric">Client ID</th>
           <th class="mdl-data-table__cell--non-numeric">Recorded</th>
         </tr>
       </thead>
@@ -31,6 +33,8 @@
           <td>{{ partition?.start?.offset | number }}</td>
           <td>{{ partition?.end?.offset | number }}</td>
           <td class="mdl-data-table__cell--non-numeric">{{ partition?.topic }}</td>
+          <td class="mdl-data-table__cell--non-numeric">{{ partition?.owner }}</td>
+          <td class="mdl-data-table__cell--non-numeric">{{ partition?.client_id }}</td>
           <td class="mdl-data-table__cell--non-numeric">{{ partition?.end?.timestamp | date:'medium' }}</td>
         </tr>
       </tbody>

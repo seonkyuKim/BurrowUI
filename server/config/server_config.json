@@ -1,5 +1,5 @@
 {
   "burrow" : {
-    "home" : "http://your.server.com/v3/kafka"
+    "home" : "http://10.20.30.13:8000/v3/kafka"
   }
 }

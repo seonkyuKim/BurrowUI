@@ -1,11 +1,14 @@
 import {PartitionInterval} from './partitionInterval';
 import {Pipe, Injectable, PipeTransform} from '@angular/core';
+
 export class Partition {
   // Constructor
   constructor(
     public topic: string,
     public partition: number,
     public status: string,
+    public owner: string,
+    public client_id: string,
     public start: PartitionInterval,
     public end: PartitionInterval
   ) {
@@ -33,8 +36,9 @@ export class Partition {
 
 @Injectable()
 export class PartitionFilterPipe implements PipeTransform {
-  transform(items: any[], args: any[]): any {
+  transform(items: Partition[], args: any[]): any {
     // filter items array, items which match and return true will be kept, false will be filtered out
-    return items.filter(item => args.indexOf(item.status) !== -1);
+    return items.sort((a, b) => (a.topic + a.owner + a.client_id).localeCompare(b.topic + b.owner + b.client_id))
+      .filter(item => args.indexOf(item.status) !== -1);
   }
 }
